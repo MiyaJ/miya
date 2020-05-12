@@ -3,6 +3,7 @@ package com.miya.auth.configure;
 import com.miya.auth.properties.MiyaAuthProperties;
 import com.miya.auth.properties.MiyaClientsProperties;
 import com.miya.auth.service.MiyaUserDetailService;
+import com.miya.auth.translator.MiyaWebResponseExceptionTranslator;
 import com.miya.exception.MiyaAuthException;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -43,6 +44,8 @@ public class MiyaAuthorizationServerConfigure extends AuthorizationServerConfigu
     private PasswordEncoder passwordEncoder;
     @Autowired
     private MiyaAuthProperties authProperties;
+    @Autowired
+    private MiyaWebResponseExceptionTranslator exceptionTranslator;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -70,7 +73,8 @@ public class MiyaAuthorizationServerConfigure extends AuthorizationServerConfigu
         endpoints.tokenStore(tokenStore())
                 .userDetailsService(userDetailService)
                 .authenticationManager(authenticationManager)
-                .tokenServices(defaultTokenServices());
+                .tokenServices(defaultTokenServices())
+                .exceptionTranslator(exceptionTranslator);
     }
 
     /**
