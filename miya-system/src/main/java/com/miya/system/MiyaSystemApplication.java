@@ -1,9 +1,11 @@
 package com.miya.system;
 
 import com.miya.annotation.EnableMiyaAuthExceptionHandler;
+import com.miya.annotation.EnableMiyaOauth2FeignClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 /**
@@ -13,6 +15,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableMiyaAuthExceptionHandler
+@EnableFeignClients
+@EnableMiyaOauth2FeignClient
 public class MiyaSystemApplication {
 
     public static void main(String[] args) {

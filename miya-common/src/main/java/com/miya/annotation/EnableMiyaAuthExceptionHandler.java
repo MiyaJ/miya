@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 /**
  * @author Caixiaowei
  * @ClassName EnableMiyaAuthExceptionHandler.java
- * @Description TODO
+ * @Description 认证类型异常翻译
  * @createTime 2020年05月12日 18:06:00
  */
 @Target({ElementType.TYPE})
