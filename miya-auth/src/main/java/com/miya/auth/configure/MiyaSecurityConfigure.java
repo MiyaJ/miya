@@ -1,0 +1,62 @@
+package com.miya.auth.configure;
+
+import com.miya.auth.service.MiyaUserDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+/**
+ * @author Caixiaowei
+ * @ClassName MiyaSecurityConfigure.java
+ * @Description WebSecurity 安全配置类
+ * @createTime 2020年05月12日 11:40:00
+ */
+@EnableWebSecurity
+@Order(2)
+public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private MiyaUserDetailService userDetailService;
+
+    /**
+     * @title 定义密码加密
+     * @description
+     * @author Caixiaowei
+     * @updateTime 2020/5/12 11:44
+     * @throws
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.requestMatchers()
+                // 匹配所有 oauth/ 的请求
+                .antMatchers("/oauth/**")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/oauth/**").authenticated()
+                .and()
+                .csrf().disable();
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
+    }
+}

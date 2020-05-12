@@ -1,0 +1,18 @@
+server:
+  port: 8301
+spring:
+  application:
+    name: miya-gateway
+  cloud:
+    nacos:
+      discovery:
+        namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
+        server-addr: localhost:8001
+    gateway:
+      routes:
+        - id: miya-auth
+          uri: lb://miya-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1 # # 请求转发前，将Path的内容截去前面一位
