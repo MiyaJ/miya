@@ -1,5 +1,6 @@
 server:
   port: 8301
+
 spring:
   application:
     name: miya-gateway
@@ -15,4 +16,4 @@ spring:
           predicates:
             - Path=/auth/**
           filters:
-            - StripPrefix=1 # # 请求转发前，将Path的内容截去前面一位
+            - StripPrefix=1 # 请求转发前，将Path的内容截去前面一位

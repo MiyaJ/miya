@@ -14,6 +14,7 @@
     <modules>
         <module>miya-common</module>
         <module>miya-auth</module>
+        <module>miya-gateway</module>
     </modules>
 
     <parent>
