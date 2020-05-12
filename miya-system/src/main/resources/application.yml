@@ -1,0 +1,17 @@
+server:
+  port: 8201
+
+spring:
+  application:
+    name: miya-system
+  cloud:
+    nacos:
+      discovery:
+        namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
+        server-addr: localhost:8001
+
+security:
+  oauth2:
+    resource:
+      id: ${spring.application.name}
+      user-info-uri: http://localhost:8301/auth/user

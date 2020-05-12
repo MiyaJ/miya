@@ -15,5 +15,9 @@ spring:
           uri: lb://miya-auth
           predicates:
             - Path=/auth/**
-          filters:
-            - StripPrefix=1 # 请求转发前，将Path的内容截去前面一位
+        - id: miya-system
+          uri: lb://miya-system
+          predicates:
+            - Path=/system/**
+      default-filters:
+        - StripPrefix=1 # 请求转发前，将Path的内容截去前面一位
