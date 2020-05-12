@@ -38,10 +38,10 @@ public class SecurityController {
     public MiyaResponse signout(HttpServletRequest request) throws MiyaAuthException {
         String authorization = request.getHeader("Authorization");
         String token = StringUtils.replace(authorization, "Bearer ", "");
-        MiyaResponse febsResponse = new MiyaResponse();
+        MiyaResponse miyaResponse = new MiyaResponse();
         if (!consumerTokenServices.revokeToken(token)) {
             throw new MiyaAuthException("退出登录失败");
         }
-        return febsResponse.message("退出登录成功");
+        return miyaResponse.message("退出登录成功");
     }
 }
