@@ -1,6 +1,11 @@
 package com.miya.auth.configure;
 
+import com.miya.auth.properties.MiyaAuthProperties;
+import com.miya.auth.properties.MiyaClientsProperties;
 import com.miya.auth.service.MiyaUserDetailService;
+import com.miya.exception.MiyaAuthException;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +13,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -15,6 +21,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.util.CollectionUtils;
 
 /**
  * @author Caixiaowei
@@ -34,16 +41,28 @@ public class MiyaAuthorizationServerConfigure extends AuthorizationServerConfigu
     private MiyaUserDetailService userDetailService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private MiyaAuthProperties authProperties;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-                // 客户端获取token的配置
-                .withClient("miya")
-                .secret(passwordEncoder.encode("123456"))
-                .authorizedGrantTypes("password", "refresh_token")
-                // token 范围
-                .scopes("all");
+        MiyaClientsProperties[] clientsArray = authProperties.getClients();
+        InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
+        if (ArrayUtils.isNotEmpty(clientsArray)) {
+            for (MiyaClientsProperties client : clientsArray) {
+                if (StringUtils.isBlank(client.getClient())) {
+                    throw new MiyaAuthException("client 不能为空");
+                }
+                if (StringUtils.isBlank(client.getSecret())) {
+                    throw new MiyaAuthException("secret不能为空");
+                }
+                String[] grantTypes = StringUtils.splitByWholeSeparatorPreserveAllTokens(client.getGrantType(), ",");
+                builder.withClient(client.getClient())
+                        .secret(passwordEncoder.encode(client.getSecret()))
+                        .authorizedGrantTypes(grantTypes)
+                        .scopes(client.getScope());
+            }
+        }
     }
 
     @Override
@@ -82,9 +101,9 @@ public class MiyaAuthorizationServerConfigure extends AuthorizationServerConfigu
         // true 表示开启刷新token
         tokenServices.setSupportRefreshToken(true);
         // token 有效期
-        tokenServices.setAccessTokenValiditySeconds(60 * 60 * 24);
+        tokenServices.setAccessTokenValiditySeconds(authProperties.getAccessTokenValiditySeconds());
         // token刷新时间
-        tokenServices.setRefreshTokenValiditySeconds(60 * 60 * 24 * 7);
+        tokenServices.setRefreshTokenValiditySeconds(authProperties.getRefreshTokenValiditySeconds());
         return tokenServices;
     }
 }
