@@ -1,6 +1,5 @@
 package com.miya.interceptor;
 
-import com.alibaba.fastjson.JSONObject;
 import com.miya.constant.MiyaConstant;
 import com.miya.entity.MiyaResponse;
 import com.miya.utils.MiyaUtil;
@@ -24,10 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 public class MiyaServerProtectInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // 从请求头中获取 Zuul Token
+        // 从请求头中获取 gateway Token
         String token = request.getHeader(MiyaConstant.GATEWAY_TOKEN_HEADER);
         String gatewayToken = new String(Base64Utils.encode(MiyaConstant.GATEWAY_TOKEN_VALUE.getBytes()));
-        // 校验 Zuul Token的正确性
+        // 校验 gateway Token的正确性
         if (StringUtils.equals(gatewayToken, token)) {
             return true;
         } else {

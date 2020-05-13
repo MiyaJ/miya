@@ -1,6 +1,7 @@
 package com.miya.auth;
 
-import com.miya.annotation.EnableMiyaAuthExceptionHandler;
+import com.miya.annotation.MiyaCloudApplication;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -10,7 +11,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableMiyaAuthExceptionHandler
+@MapperScan("com.miya.auth.mapper")
+@MiyaCloudApplication
 public class MiyaAuthApplication {
 
     public static void main(String[] args) {

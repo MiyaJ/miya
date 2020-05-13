@@ -37,6 +37,7 @@ public class MiyaServerProtectConfigure implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(miyaServerProtectInterceptor());
+        HandlerInterceptor handlerInterceptor = miyaServerProtectInterceptor();
+        registry.addInterceptor(handlerInterceptor);
     }
 }
