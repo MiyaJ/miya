@@ -1,5 +1,6 @@
 package com.miya.auth;
 
+import com.miya.annotation.EnableMiyaLettuceRedis;
 import com.miya.annotation.MiyaCloudApplication;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @MapperScan("com.miya.auth.mapper")
 @MiyaCloudApplication
+@EnableMiyaLettuceRedis
 public class MiyaAuthApplication {
 
     public static void main(String[] args) {
