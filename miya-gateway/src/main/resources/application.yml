@@ -20,4 +20,6 @@ spring:
           predicates:
             - Path=/system/**
       default-filters:
-        - StripPrefix=1 # ÇëÇó×ª·¢Ç°£¬½«PathµÄÄÚÈİ½ØÈ¥Ç°ÃæÒ»Î»
+        - StripPrefix=1
+  autoconfigure: # å…³é—­æ•°æ®åº“è‡ªåŠ¨è£…é…
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
