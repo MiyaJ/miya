@@ -20,4 +20,14 @@ public class MiyaAuthProperties {
     private MiyaClientsProperties[] clients = {};
     private int accessTokenValiditySeconds = 60 * 60 * 24;
     private int refreshTokenValiditySeconds = 60 * 60 * 24 * 7;
+
+    /**
+     * 免认证url
+     */
+    private String anonUrl;
+
+    /**
+     * 验证码配置
+     */
+    private MiyaValidateCodeProperties code = new MiyaValidateCodeProperties();
 }

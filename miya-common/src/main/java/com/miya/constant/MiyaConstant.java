@@ -17,4 +17,18 @@ public class MiyaConstant {
      * 网关header 值
      */
     public static final String GATEWAY_TOKEN_VALUE = "123456";
+
+    /**
+     * gif类型
+     */
+    public static final String GIF = "gif";
+    /**
+     * png类型
+     */
+    public static final String PNG = "png";
+
+    /**
+     * 验证码 key前缀
+     */
+    public static final String CODE_PREFIX = "miya.captcha.";
 }

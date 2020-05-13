@@ -1,7 +1,9 @@
 package com.miya.auth.configure;
 
+import com.miya.auth.properties.MiyaAuthProperties;
 import com.miya.handler.MiyaAccessDeniedHandler;
 import com.miya.handler.MiyaAuthExceptionEntryPoint;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,6 +25,8 @@ public class MiyaResourceServerConfigure extends ResourceServerConfigurerAdapter
     private MiyaAccessDeniedHandler accessDeniedHandler;
     @Autowired
     private MiyaAuthExceptionEntryPoint exceptionEntryPoint;
+    @Autowired
+    private MiyaAuthProperties properties;
 
     /**
      * @title 配置: 对所有请求有效
@@ -33,11 +37,14 @@ public class MiyaResourceServerConfigure extends ResourceServerConfigurerAdapter
      */
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(properties.getAnonUrl(), ",");
         http.csrf().disable()
                 .requestMatchers().antMatchers("/**")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**").authenticated();
+                .antMatchers(anonUrls).permitAll() // 配置免认证
+                .antMatchers("/**").authenticated()
+                .and().httpBasic();
     }
 
     /**

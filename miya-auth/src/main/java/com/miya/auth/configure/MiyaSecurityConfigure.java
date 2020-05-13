@@ -1,5 +1,6 @@
 package com.miya.auth.configure;
 
+import com.miya.auth.filter.ValidateCodeFilter;
 import com.miya.auth.service.MiyaUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @author Caixiaowei
@@ -24,6 +26,8 @@ public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MiyaUserDetailService userDetailService;
+    @Autowired
+    private ValidateCodeFilter validateCodeFilter;
 
     /**
      * @title 定义密码加密
@@ -45,8 +49,8 @@ public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
-                // 匹配所有 oauth/ 的请求
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .requestMatchers()
                 .antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()
@@ -59,4 +63,5 @@ public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
     }
+
 }
