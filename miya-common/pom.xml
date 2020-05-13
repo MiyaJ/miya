@@ -67,5 +67,34 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.3.1</version>
         </dependency>
+        <!--MyBatis Plus多数据源-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>2.5.4</version>
+        </dependency>
+        <!--mysql 驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--mybatis plus 代码生成-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+        <!--代码 模板-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.30</version>
+        </dependency>
     </dependencies>
 </project>
