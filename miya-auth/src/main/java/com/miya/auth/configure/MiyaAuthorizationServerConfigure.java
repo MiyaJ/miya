@@ -69,6 +69,7 @@ public class MiyaAuthorizationServerConfigure extends AuthorizationServerConfigu
     }
 
     @Override
+    @SuppressWarnings("all")
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.tokenStore(tokenStore())
                 .userDetailsService(userDetailService)
