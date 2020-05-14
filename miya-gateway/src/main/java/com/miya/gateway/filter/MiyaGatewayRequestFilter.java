@@ -83,8 +83,7 @@ public class MiyaGatewayRequestFilter implements GlobalFilter {
             }
         }
         if (!shouldForward) {
-            MiyaResponse miyaResponse = new MiyaResponse().message("该URI不允许外部访问");
-            return makeResponse(response, miyaResponse);
+            return makeResponse(response, MiyaResponse.error("该URI不允许外部访问"));
         }
         return null;
     }

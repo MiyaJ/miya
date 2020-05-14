@@ -48,7 +48,7 @@ public class SecurityController {
         if (!consumerTokenServices.revokeToken(token)) {
             throw new MiyaAuthException("退出登录失败");
         }
-        return miyaResponse.message("退出登录成功");
+        return MiyaResponse.success("退出登录成功");
     }
 
     /**

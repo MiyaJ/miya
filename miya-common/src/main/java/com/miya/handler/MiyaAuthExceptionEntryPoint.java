@@ -24,10 +24,8 @@ public class MiyaAuthExceptionEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse response,
                          AuthenticationException e) throws IOException, ServletException {
-        MiyaResponse miyaResponse = new MiyaResponse();
-
         MiyaUtil.makeResponse(
                 response, MediaType.APPLICATION_JSON_UTF8_VALUE,
-                HttpServletResponse.SC_UNAUTHORIZED, miyaResponse.message("token无效"));
+                HttpServletResponse.SC_UNAUTHORIZED, MiyaResponse.error("token无效"));
     }
 }

@@ -49,9 +49,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                 validateCode(httpServletRequest);
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
             } catch (ValidateCodeException e) {
-                MiyaResponse miyaResponse = new MiyaResponse();
                 MiyaUtil.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_UTF8_VALUE,
-                        HttpServletResponse.SC_INTERNAL_SERVER_ERROR, miyaResponse.message(e.getMessage()));
+                        HttpServletResponse.SC_INTERNAL_SERVER_ERROR, MiyaResponse.error(e.getMessage()));
                 log.error(e.getMessage(), e);
             }
         } else {

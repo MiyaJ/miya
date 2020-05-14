@@ -23,25 +23,24 @@ public class MiyaWebResponseExceptionTranslator implements WebResponseExceptionT
     @Override
     public ResponseEntity translate(Exception e) throws Exception {
         ResponseEntity.BodyBuilder status = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR);
-        MiyaResponse response = new MiyaResponse();
         String message = "认证失败";
         log.error(message, e);
         if (e instanceof UnsupportedGrantTypeException) {
             message = "不支持该认证类型";
-            return status.body(response.message(message));
+            return status.body(MiyaResponse.error(message));
         }
         if (e instanceof InvalidGrantException) {
             if (StringUtils.containsIgnoreCase(e.getMessage(), "Invalid refresh token")) {
                 message = "refresh token无效";
-                return status.body(response.message(message));
+                return status.body(MiyaResponse.error(message));
             }
             if (StringUtils.containsIgnoreCase(e.getMessage(), "locked")) {
                 message = "用户已被锁定，请联系管理员";
-                return status.body(response.message(message));
+                return status.body(MiyaResponse.error(message));
             }
             message = "用户名或密码错误";
-            return status.body(response.message(message));
+            return status.body(MiyaResponse.error(message));
         }
-        return status.body(response.message(message));
+        return status.body(MiyaResponse.error(message));
     }
 }

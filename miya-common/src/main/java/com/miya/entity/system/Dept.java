@@ -1,7 +1,6 @@
 package com.miya.entity.system;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author Caixiaowei
- * @since 2020-05-13
+ * @since 2020-05-14
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,38 +29,33 @@ public class Dept implements Serializable {
     /**
      * 部门ID
      */
-    @TableId(value = "DEPT_ID", type = IdType.AUTO)
-    private Long deptId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 上级部门ID
      */
-    @TableField("PARENT_ID")
     private Long parentId;
 
     /**
      * 部门名称
      */
-    @TableField("DEPT_NAME")
     private String deptName;
 
     /**
      * 排序
      */
-    @TableField("ORDER_NUM")
     private Double orderNum;
 
     /**
      * 创建时间
      */
-    @TableField("CREATE_TIME")
     private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
-    @TableField("MODIFY_TIME")
-    private LocalDateTime modifyTime;
+    private LocalDateTime updateTime;
 
 
 }

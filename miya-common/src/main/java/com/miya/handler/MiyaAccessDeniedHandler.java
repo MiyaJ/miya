@@ -22,9 +22,8 @@ public class MiyaAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException {
-        MiyaResponse miyaResponse = new MiyaResponse();
         MiyaUtil.makeResponse(
                 response, MediaType.APPLICATION_JSON_UTF8_VALUE,
-                HttpServletResponse.SC_FORBIDDEN, miyaResponse.message("没有权限访问该资源"));
+                HttpServletResponse.SC_FORBIDDEN, MiyaResponse.error("没有权限访问该资源"));
     }
 }

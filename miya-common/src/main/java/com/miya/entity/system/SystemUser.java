@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -39,79 +40,82 @@ public class SystemUser implements Serializable {
     /**
      * 用户 ID
      */
-    @TableId(value = "USER_ID", type = IdType.AUTO)
-    private Long userId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+
+    @TableField(exist = false)
+    private String userId;
 
     /**
      * 用户名
      */
-    @TableField("USERNAME")
+    @TableField("username")
     private String username;
 
     /**
      * 密码
      */
-    @TableField("PASSWORD")
+    @TableField("password")
     private String password;
 
     /**
      * 部门 ID
      */
-    @TableField("DEPT_ID")
+    @TableField("dept_id")
     private Long deptId;
 
     /**
      * 邮箱
      */
-    @TableField("EMAIL")
+    @TableField("email")
     private String email;
 
     /**
      * 联系电话
      */
-    @TableField("MOBILE")
+    @TableField("mobile")
     private String mobile;
 
     /**
      * 状态 0锁定 1有效
      */
-    @TableField("STATUS")
+    @TableField("status")
     private String status;
 
     /**
      * 创建时间
      */
-    @TableField("CREATE_TIME")
-    private Date createTime;
+    @TableField("create_time")
+    private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
-    @TableField("MODIFY_TIME")
-    private Date modifyTime;
+    @TableField("update_time")
+    private LocalDateTime update_time;
 
     /**
      * 最近访问时间
      */
-    @TableField("LAST_LOGIN_TIME")
-    private Date lastLoginTime;
+    @TableField("last_login_time")
+    private LocalDateTime lastLoginTime;
 
     /**
      * 性别 0男 1女 2 保密
      */
-    @TableField("SSEX")
+    @TableField("ssex")
     private String sex;
 
     /**
      * 头像
      */
-    @TableField("AVATAR")
+    @TableField("avatar")
     private String avatar;
 
     /**
      * 描述
      */
-    @TableField("DESCRIPTION")
+    @TableField("description")
     private String description;
 
     /**

@@ -65,7 +65,7 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName(scanner("system"));
+        pc.setModuleName(scanner("模块"));
         pc.setParent("com.miya");
         mpg.setPackageInfo(pc);
 

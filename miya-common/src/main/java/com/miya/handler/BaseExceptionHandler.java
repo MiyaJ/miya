@@ -21,19 +21,19 @@ public class BaseExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public MiyaResponse handleException(Exception e) {
         log.error("系统内部异常，异常信息", e);
-        return new MiyaResponse().message("系统内部异常");
+        return MiyaResponse.error("系统内部异常");
     }
 
     @ExceptionHandler(value = MiyaAuthException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public MiyaResponse handleMiyaAuthException(MiyaAuthException e) {
         log.error("系统错误", e);
-        return new MiyaResponse().message(e.getMessage());
+        return MiyaResponse.error(e.getMessage());
     }
 
     @ExceptionHandler(value = AccessDeniedException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public MiyaResponse handleAccessDeniedException(){
-        return new MiyaResponse().message("没有权限访问该资源");
+        return MiyaResponse.error("没有权限访问该资源");
     }
 }

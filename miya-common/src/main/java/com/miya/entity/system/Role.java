@@ -1,7 +1,6 @@
 package com.miya.entity.system;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author Caixiaowei
- * @since 2020-05-13
+ * @since 2020-05-14
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,32 +29,28 @@ public class Role implements Serializable {
     /**
      * 角色ID
      */
-    @TableId(value = "ROLE_ID", type = IdType.AUTO)
-    private Long roleId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 角色名称
      */
-    @TableField("ROLE_NAME")
     private String roleName;
 
     /**
      * 角色描述
      */
-    @TableField("REMARK")
     private String remark;
 
     /**
      * 创建时间
      */
-    @TableField("CREATE_TIME")
     private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
-    @TableField("MODIFY_TIME")
-    private LocalDateTime modifyTime;
+    private LocalDateTime updateTime;
 
 
 }

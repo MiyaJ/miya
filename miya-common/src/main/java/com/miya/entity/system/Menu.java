@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -29,68 +30,68 @@ public class Menu implements Serializable {
     /**
      * 菜单/按钮ID
      */
-    @TableId(value = "MENU_ID", type = IdType.AUTO)
-    private Long menuId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 上级菜单ID
      */
-    @TableField("PARENT_ID")
+    @TableField("parent_id")
     private Long parentId;
 
     /**
      * 菜单/按钮名称
      */
-    @TableField("MENU_NAME")
+    @TableField("menu_name")
     private String menuName;
 
     /**
      * 菜单URL
      */
-    @TableField("PATH")
+    @TableField("path")
     private String path;
 
     /**
      * 对应 Vue组件
      */
-    @TableField("COMPONENT")
+    @TableField("component")
     private String component;
 
     /**
      * 权限标识
      */
-    @TableField("PERMS")
+    @TableField("perms")
     private String perms;
 
     /**
      * 图标
      */
-    @TableField("ICON")
+    @TableField("icon")
     private String icon;
 
     /**
      * 类型 0菜单 1按钮
      */
-    @TableField("TYPE")
+    @TableField("type")
     private String type;
 
     /**
      * 排序
      */
-    @TableField("ORDER_NUM")
+    @TableField("order_num")
     private Integer orderNum;
 
     /**
      * 创建时间
      */
-    @TableField("CREATE_TIME")
-    private Date createTime;
+    @TableField("create_time")
+    private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
-    @TableField("MODIFY_TIME")
-    private Date modifyTime;
+    @TableField("update_time")
+    private LocalDateTime updateTime;
 
     private transient String createTimeFrom;
     private transient String createTimeTo;

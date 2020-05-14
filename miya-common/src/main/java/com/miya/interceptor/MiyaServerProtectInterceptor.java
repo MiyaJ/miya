@@ -30,9 +30,8 @@ public class MiyaServerProtectInterceptor implements HandlerInterceptor {
         if (StringUtils.equals(gatewayToken, token)) {
             return true;
         } else {
-            MiyaResponse miyaResponse = new MiyaResponse();
             MiyaUtil.makeResponse(response, MediaType.APPLICATION_JSON_UTF8_VALUE, HttpServletResponse.SC_FORBIDDEN,
-                    miyaResponse.message("请通过网关获取资源"));
+                    MiyaResponse.error("请通过网关获取资源"));
             return false;
         }
     }

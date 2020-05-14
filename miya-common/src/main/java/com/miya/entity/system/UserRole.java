@@ -1,6 +1,5 @@
 package com.miya.entity.system;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Caixiaowei
- * @since 2020-05-13
+ * @since 2020-05-14
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,13 +26,11 @@ public class UserRole implements Serializable {
     /**
      * 用户ID
      */
-    @TableField("USER_ID")
     private Long userId;
 
     /**
      * 角色ID
      */
-    @TableField("ROLE_ID")
     private Long roleId;
 
 
