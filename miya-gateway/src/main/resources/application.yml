@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: miya-gateway
+  # admin 监控
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: miya
+        password: 123456
   cloud:
     nacos:
       discovery:
@@ -23,3 +30,19 @@ spring:
         - StripPrefix=1
   autoconfigure: # 关闭数据库自动装配
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+# admin 监控
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

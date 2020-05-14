@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: miya-system
+  # admin 监控
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: miya
+        password: 123456
   cloud:
     nacos:
       discovery:
@@ -51,3 +58,20 @@ security:
     resource:
       id: ${spring.application.name}
       user-info-uri: http://localhost:8301/auth/user
+
+# admin 监控
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+# admin 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

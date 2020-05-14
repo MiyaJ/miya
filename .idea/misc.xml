@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/miya-auth/pom.xml" />
         <option value="$PROJECT_DIR$/miya-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/miya-system/pom.xml" />
+        <option value="$PROJECT_DIR$/miya-monitor/miya-monitor-admin/pom.xml" />
       </list>
     </option>
   </component>

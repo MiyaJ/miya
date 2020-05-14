@@ -2,13 +2,15 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="miya-system" />
-        <module name="miya-common" />
         <module name="miya-auth" />
+        <module name="miya-common" />
+        <module name="miya-monitor-admin" />
         <module name="miya-gateway" />
       </profile>
     </annotationProcessing>
@@ -19,6 +21,8 @@
       <module name="miya-auth" options="-parameters" />
       <module name="miya-common" options="-parameters" />
       <module name="miya-gateway" options="-parameters" />
+      <module name="miya-monitor" options="-parameters" />
+      <module name="miya-monitor-admin" options="-parameters" />
       <module name="miya-system" options="-parameters" />
     </option>
   </component>

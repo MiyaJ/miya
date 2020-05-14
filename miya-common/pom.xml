@@ -96,5 +96,11 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.30</version>
         </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.1.6</version>
+        </dependency>
     </dependencies>
 </project>

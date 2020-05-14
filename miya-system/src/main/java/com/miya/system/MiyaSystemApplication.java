@@ -1,6 +1,5 @@
 package com.miya.system;
 
-import com.miya.annotation.EnableMiyaAuthExceptionHandler;
 import com.miya.annotation.EnableMiyaLettuceRedis;
 import com.miya.annotation.MiyaCloudApplication;
 import org.mybatis.spring.annotation.MapperScan;

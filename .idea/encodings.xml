@@ -4,6 +4,9 @@
     <file url="file://$PROJECT_DIR$/miya-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/miya-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/miya-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/miya-monitor/miya-monitor-admin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/miya-monitor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/miya-monitor/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/miya-system/src/main/java" charset="UTF-8" />
   </component>
 </project>

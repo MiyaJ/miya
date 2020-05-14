@@ -50,11 +50,16 @@ public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+//                .requestMatchers()
+//                .antMatchers("/oauth/**")
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/oauth/**").authenticated()
+//                .and()
+//                .csrf().disable();
                 .requestMatchers()
                 .antMatchers("/oauth/**")
-                .and()
-                .authorizeRequests()
-                .antMatchers("/oauth/**").authenticated()
+                .antMatchers("/actuator/**")
                 .and()
                 .csrf().disable();
     }

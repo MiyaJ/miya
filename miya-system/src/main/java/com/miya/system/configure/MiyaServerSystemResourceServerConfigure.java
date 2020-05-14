@@ -38,6 +38,8 @@ public class MiyaServerSystemResourceServerConfigure extends ResourceServerConfi
                 .and()
                 .authorizeRequests()
                 .antMatchers(anonUrls).permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll()
                 .antMatchers("/**").authenticated();
     }
 

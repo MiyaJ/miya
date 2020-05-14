@@ -8,6 +8,13 @@ spring:
       discovery:
         namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
         server-addr: localhost:8001
+  # admin 监控
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: miya
+        password: 123456
   redis:
     database: 0
     host: 127.0.0.1
@@ -44,3 +51,19 @@ mybatis-plus:
     jdbc-type-for-null: null
   global-config:
     banner: false
+
+# admin 监控
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
