@@ -92,7 +92,7 @@ public class SystemUser implements Serializable {
      * 修改时间
      */
     @TableField("update_time")
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 
     /**
      * 最近访问时间

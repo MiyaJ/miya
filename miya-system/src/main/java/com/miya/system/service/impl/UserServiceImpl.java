@@ -26,7 +26,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     private UserMapper userMapper;
 
     /**
-     * @param page
+     * @param request
      * @param user
      * @throws
      * @title 分页查找用户信息
