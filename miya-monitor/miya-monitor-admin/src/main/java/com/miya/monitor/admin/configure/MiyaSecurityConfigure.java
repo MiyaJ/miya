@@ -7,10 +7,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 /**
- * @author Caixiaowei
- * @ClassName MiyaSecurityConfigure.java
- * @Description 安全配置
- * @createTime 2020年05月14日 16:27:00
+ * @program: miya-cloud
+ * @description: 安全配置类
+ * @author: CaiXiaowei
+ * @create: 2020-03-24 19:33
  */
 @EnableWebSecurity
 public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
@@ -36,5 +36,4 @@ public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
                 .httpBasic().and()
                 .csrf().disable();
     }
-
 }
