@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="miya-system" />
-        <module name="miya-auth" />
         <module name="miya-common" />
+        <module name="miya-auth" />
         <module name="miya-monitor-admin" />
+        <module name="miya-system" />
         <module name="miya-gateway" />
       </profile>
     </annotationProcessing>
