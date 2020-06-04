@@ -8,7 +8,6 @@ import com.miya.entity.system.SystemUser;
 import com.miya.system.mapper.UserMapper;
 import com.miya.system.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 /**
@@ -38,5 +37,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SystemUser> impleme
     public IPage<SystemUser> findUserDetailPage(SystemUser user, QueryRequest request) {
         Page<SystemUser> page = new Page<>(request.getPageNum(), request.getPageSize());
         return userMapper.findUserDetailPage(page, user);
+    }
+
+    @Override
+    public SystemUser findByName(String username) {
+        return null;
     }
 }

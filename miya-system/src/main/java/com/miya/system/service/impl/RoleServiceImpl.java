@@ -6,6 +6,8 @@ import com.miya.system.mapper.RoleMapper;
 import com.miya.system.service.IRoleService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 角色表 服务实现类
@@ -17,4 +19,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
+    @Override
+    public List<Role> findUserRole(String username) {
+        return null;
+    }
 }

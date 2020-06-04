@@ -1,7 +1,6 @@
 package com.miya.system.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.miya.entity.QueryRequest;
 import com.miya.entity.system.SystemUser;
@@ -24,4 +23,6 @@ public interface IUserService extends IService<SystemUser> {
      * @throws
      */
     IPage<SystemUser> findUserDetailPage(SystemUser user, QueryRequest request);
+
+    SystemUser findByName(String username);
 }

@@ -42,7 +42,7 @@ public class UserManager {
         List<Role> roleList = CashUtil.selectCacheByTemplate(
                 () -> this.cacheService.getRoles(username),
                 () -> this.roleService.findUserRole(username));
-        return roleList.stream().map(SysRole::getRoleName).collect(Collectors.toSet());
+        return roleList.stream().map(Role::getRoleName).collect(Collectors.toSet());
     }
 
     public Set<String> getUserPermissions(String username) {

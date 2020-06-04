@@ -5,6 +5,7 @@ import com.miya.entity.router.VueRouter;
 import com.miya.entity.system.Menu;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -43,4 +44,14 @@ public interface IMenuService extends IService<Menu> {
      * @updateTime 2020/6/4 16:35
      */
     List<Menu> findUserPermissions(String username);
+
+    /**
+     * @title
+     * @description
+     * @author Caixiaowei
+     * @param menu: 菜单实体
+     * @updateTime 2020/6/4 22:41
+     * @return: List<Menu> 菜单集合
+     */
+    Map<String, Object> findMenus(Menu menu);
 }

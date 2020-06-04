@@ -1,16 +1,24 @@
 package com.miya.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.miya.constant.PageConstant;
 import com.miya.entity.router.RouterMeta;
 import com.miya.entity.router.VueRouter;
 import com.miya.entity.system.Menu;
+import com.miya.entity.tree.MenuTree;
+import com.miya.entity.tree.Tree;
 import com.miya.system.mapper.MenuMapper;
 import com.miya.system.service.IMenuService;
+import com.miya.utils.TreeUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -67,5 +75,55 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     @Override
     public List<Menu> findUserPermissions(String username) {
         return menuMapper.findUserPermissions(username);
+    }
+
+    /**
+     * @param menu : 菜单实体
+     * @return List<Menu>: 菜单集合
+     * @title
+     * @description
+     * @author Caixiaowei
+     * @updateTime 2020/6/4 22:41
+     */
+    @Override
+    public Map<String, Object> findMenus(Menu menu) {
+        Map<String, Object> result = Maps.newHashMap();
+        try {
+            LambdaQueryWrapper<Menu> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.orderByAsc(Menu::getOrderNum);
+            List<Menu> menus = menuMapper.selectList(queryWrapper);
+            List<MenuTree> trees = Lists.newArrayList();
+            buildTrees(trees, menus);
+            if (StringUtils.equals(menu.getType(), Menu.TYPE_BUTTON)) {
+                result.put(PageConstant.ROWS, trees);
+            } else {
+                List<? extends Tree<?>> menuTree = TreeUtil.build(trees);
+                result.put(PageConstant.ROWS, menuTree);
+            }
+            result.put(PageConstant.TOTAL, menus.size());
+        } catch (Exception e) {
+            result.put(PageConstant.ROWS, null);
+            result.put(PageConstant.TOTAL, 0);
+        }
+        return result;
+    }
+
+
+
+    /******************************************** 私有方法 ******************************************************/
+    private void buildTrees(List<MenuTree> trees, List<Menu> menus) {
+        menus.forEach(menu -> {
+            MenuTree tree = new MenuTree();
+            tree.setId(menu.getId().toString());
+            tree.setParentId(menu.getParentId().toString());
+            tree.setLabel(menu.getMenuName());
+            tree.setComponent(menu.getComponent());
+            tree.setIcon(menu.getIcon());
+            tree.setOrderNum(menu.getOrderNum());
+            tree.setPath(menu.getPath());
+            tree.setType(menu.getType());
+            tree.setPerms(menu.getPerms());
+            trees.add(tree);
+        });
     }
 }
