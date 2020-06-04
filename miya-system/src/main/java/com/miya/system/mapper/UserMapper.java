@@ -17,4 +17,13 @@ import org.springframework.data.repository.query.Param;
 public interface UserMapper extends BaseMapper<SystemUser> {
 
     IPage<SystemUser> findUserDetailPage(Page page, @Param("user") SystemUser user);
+
+    /**
+     * @title 根据用户名查询用户详情
+     * @description
+     * @author Caixiaowei
+     * @param username 用户名
+     * @updateTime 2020/6/4 17:33
+     */
+    SystemUser findDetail(String username);
 }

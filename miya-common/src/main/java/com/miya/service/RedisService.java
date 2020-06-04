@@ -69,7 +69,7 @@ public class RedisService {
      *
      * @param key 可以传一个值 或多个
      */
-    public void del(String... key) {
+    public void delete(String... key) {
         if (key != null && key.length > 0) {
             if (key.length == 1) {
                 redisTemplate.delete(key[0]);
