@@ -13,4 +13,5 @@ import com.miya.entity.system.UserRole;
  */
 public interface IUserRoleService extends IService<UserRole> {
 
+    void deleteUserRolesByRoleId(String[] roleIds);
 }

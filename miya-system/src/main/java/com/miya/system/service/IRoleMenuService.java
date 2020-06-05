@@ -13,4 +13,5 @@ import com.miya.entity.system.RoleMenu;
  */
 public interface IRoleMenuService extends IService<RoleMenu> {
 
+    void deleteRoleMenusByRoleId(String[] roleIds);
 }

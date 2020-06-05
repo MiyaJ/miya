@@ -31,4 +31,13 @@ public class MiyaConstant {
      * 验证码 key前缀
      */
     public static final String CODE_PREFIX = "miya.captcha.";
+
+    /**
+     * 排序规则：降序
+     */
+    public static final String ORDER_DESC = "descending";
+    /**
+     * 排序规则：升序
+     */
+    public static final String ORDER_ASC = "ascending";
 }

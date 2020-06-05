@@ -52,5 +52,6 @@ public class Role implements Serializable {
      */
     private LocalDateTime updateTime;
 
+    private transient String menuIds;
 
 }
