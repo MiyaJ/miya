@@ -24,6 +24,8 @@ import java.time.LocalDateTime;
 @TableName("t_dept")
 public class Dept implements Serializable {
 
+    public static final Long TOP_DEPT_ID = 0L;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -45,7 +47,7 @@ public class Dept implements Serializable {
     /**
      * 排序
      */
-    private Double orderNum;
+    private Integer orderNum;
 
     /**
      * 创建时间
@@ -57,5 +59,7 @@ public class Dept implements Serializable {
      */
     private LocalDateTime updateTime;
 
+    private transient String createTimeFrom;
 
+    private transient String createTimeTo;
 }
