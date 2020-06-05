@@ -1,6 +1,7 @@
 package com.miya.system.controller;
 
 import com.google.common.collect.Maps;
+import com.miya.constant.StringConstant;
 import com.miya.entity.MiyaResponse;
 import com.miya.entity.router.VueRouter;
 import com.miya.entity.system.Menu;
@@ -10,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -31,9 +29,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Validated
 public class MenuController {
-
-    @Autowired
-    private UserManager userManager;
 
     @Autowired
     private IMenuService menuService;
@@ -61,6 +56,7 @@ public class MenuController {
      * @updateTime 2020/6/4 22:34
      * @return:
      */
+    @GetMapping()
     public MiyaResponse menuList(Menu menu) {
         Map<String, Object> menus = menuService.findMenus(menu);
         return MiyaResponse.success(menus);
@@ -79,5 +75,45 @@ public class MenuController {
         List<Menu> menus = menuService.findUserPermissions(username);
         String permissions = menus.stream().map(Menu::getPerms).collect(Collectors.joining(","));
         return MiyaResponse.success(permissions);
+    }
+
+    /**
+     * @title 新增菜单/按钮
+     * @description
+     * @author Caixiaowei
+     * @param menu
+     * @updateTime 2020/6/5 9:52
+     */
+    @PostMapping("/add")
+    public MiyaResponse add(@RequestBody Menu menu) {
+        menuService.add(menu);
+        return MiyaResponse.success();
+    }
+
+    /**
+     * @title 修改菜单/按钮
+     * @description
+     * @author Caixiaowei
+     * @param menu
+     * @updateTime 2020/6/5 9:53
+     */
+    @PostMapping("/update")
+    public MiyaResponse update(@RequestBody Menu menu) {
+        menuService.update(menu);
+        return MiyaResponse.success();
+    }
+
+    /**
+     * @title 删除菜单/按钮
+     * @description
+     * @author Caixiaowei
+     * @param menuIds 菜单/按钮 ids
+     * @updateTime 2020/6/5 9:53
+     */
+    @DeleteMapping("/delete")
+    public MiyaResponse delete(String menuIds) {
+        String[] ids = menuIds.split(StringConstant.COMMA);
+        menuService.delete(ids);
+        return MiyaResponse.success();
     }
 }

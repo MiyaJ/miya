@@ -54,4 +54,17 @@ public interface IMenuService extends IService<Menu> {
      * @return: List<Menu> 菜单集合
      */
     Map<String, Object> findMenus(Menu menu);
+
+    /**
+     * @title 新增菜单/按钮
+     * @description
+     * @author Caixiaowei
+     * @param menu 菜单/按钮 实体
+     * @updateTime 2020/6/5 10:15
+     */
+    void add(Menu menu);
+
+    void update(Menu menu);
+
+    void delete(String[] menuIds);
 }
