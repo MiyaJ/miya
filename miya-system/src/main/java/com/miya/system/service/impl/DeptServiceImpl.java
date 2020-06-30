@@ -1,5 +1,6 @@
 package com.miya.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
@@ -12,6 +13,7 @@ import com.miya.entity.tree.DeptTree;
 import com.miya.entity.tree.Tree;
 import com.miya.system.mapper.DeptMapper;
 import com.miya.system.service.IDeptService;
+import com.miya.system.service.IUserDataPermissionService;
 import com.miya.utils.SortUtil;
 import com.miya.utils.TreeUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -41,6 +44,9 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
     @Autowired
     private DeptMapper deptMapper;
+
+    @Autowired
+    private IUserDataPermissionService userDataPermissionService;
 
     /**
      * @param dept    : 部门
@@ -147,7 +153,20 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
         });
     }
 
-    private void delete(List<String> asList) {
+    private void delete(List<String> deptIds) {
+        removeByIds(deptIds);
+
+        // 删除user-dept 关联关系
+        userDataPermissionService.deleteByDeptIds(deptIds);
+        // 递归删除所有对应子部门
+        LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.in(Dept::getParentId, deptIds);
+        List<Dept> depts = deptMapper.selectList(queryWrapper);
+        if (!CollectionUtils.isEmpty(depts)) {
+            List<String> deptIdList = Lists.newArrayList();
+            depts.forEach(d -> deptIdList.add(String.valueOf(d.getId())));
+            this.delete(deptIdList);
+        }
 
     }
 }
