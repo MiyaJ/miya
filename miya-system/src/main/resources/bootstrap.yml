@@ -1,0 +1,17 @@
+server:
+  port: 8201
+spring:
+  application:
+    name: miya-system
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
+        server-addr: localhost:8001
+        shared-configs: mysql.yml,redis.yml,admin.yml
+      discovery:
+        namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
+        server-addr: localhost:8001
+  main:
+    allow-bean-definition-overriding: true

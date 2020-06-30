@@ -15,7 +15,13 @@ spring:
     nacos:
       discovery:
         namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
-        server-addr: localhost:8001
+        server-addr: 127.0.0.1:8001
+      config:
+        server-addr: 127.0.0.1:8001
+        file-extension: yml
+        namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
+  main:
+    allow-bean-definition-overriding: true
   redis:
     database: 0
     host: 127.0.0.1
