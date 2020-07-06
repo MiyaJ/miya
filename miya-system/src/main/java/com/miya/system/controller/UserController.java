@@ -1,6 +1,7 @@
 package com.miya.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.google.common.collect.Maps;
 import com.miya.entity.MiyaResponse;
 import com.miya.entity.QueryRequest;
 import com.miya.entity.system.SystemUser;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author Caixiaowei
@@ -39,4 +42,13 @@ public class UserController {
         return MiyaResponse.success(MiyaUtil.getDataTable(userDetailPage));
     }
 
+    public MiyaResponse currentUser() {
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("currentUser", MiyaUtil.getCurrentUser());
+        map.put("currentUsername", MiyaUtil.getCurrentUsername());
+        map.put("currentUserAuthority", MiyaUtil.getCurrentUserAuthority());
+        map.put("currentTokenValue", MiyaUtil.getCurrentTokenValue());
+        map.put("currentRequestIpAddress", MiyaUtil.getHttpServletRequestIpAddress());
+        return MiyaResponse.success(map);
+    }
 }
