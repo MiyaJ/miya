@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: miya-system
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
   # admin 监控
   boot:
     admin:
@@ -81,3 +84,12 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+rocketmq:
+  producer:
+    groupName: ${spring.application.name}
+    isOnOff: 'on'
+    maxMessageSize: 4096
+    namesrvAddr: 127.0.0.1:9876
+    retryTimesWhenSendFailed: 2
+    sendMsgTimeOut: 3000
