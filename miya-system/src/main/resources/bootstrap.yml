@@ -15,3 +15,20 @@ spring:
         server-addr: localhost:8001
   main:
     allow-bean-definition-overriding: true
+
+rocketmq:
+  producer:
+    groupName: ${spring.application.name}
+    isOnOff: 'on'
+    maxMessageSize: 4096
+    namesrvAddr: 127.0.0.1:9876
+    retryTimesWhenSendFailed: 2
+    sendMsgTimeOut: 3000
+  consumer:
+    consumeMessageBatchMaxSize: 1
+    consumeThreadMax: 32
+    consumeThreadMin: 5
+    groupName: ${spring.application.name}
+    isOnOff: 'on'
+    namesrvAddr: 127.0.0.1:9876
+    topics: TestTopic~TestTag;*~*
