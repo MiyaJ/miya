@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  * @author Caixiaowei
  * @ClassName MiyaResourceServerConfigure.java
  * @Description 资源服务器配置
+ *              用于资源保护，客户端只能通过OAuth2 协议发放的令牌来从资源服务器中获取受保护的资源
  * @createTime 2020年05月12日 13:11:00
  */
 @Configuration

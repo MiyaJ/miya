@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @author Caixiaowei
  * @ClassName MiyaSecurityConfigure.java
  * @Description WebSecurity 安全配置类
+ *              用于处理/oauth 开头的请求， spring cloud OAuth 内部定义的过去令牌、刷新令牌等相关操作
  * @createTime 2020年05月12日 11:40:00
  */
 @EnableWebSecurity
@@ -50,13 +51,6 @@ public class MiyaSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
-//                .requestMatchers()
-//                .antMatchers("/oauth/**")
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/oauth/**").authenticated()
-//                .and()
-//                .csrf().disable();
                 .requestMatchers()
                 .antMatchers("/oauth/**")
                 .antMatchers("/actuator/**")

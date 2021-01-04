@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent
  * @version 1.0
  * @classname MiyaOAuth2FeignConfigure
  * @description feign 授权配置
+ *              拦截Feign 请求，在请求头上补充原request的请求头信息
  * @date 2020/05/12 23:45
  */
 public class MiyaOAuth2FeignConfigure {

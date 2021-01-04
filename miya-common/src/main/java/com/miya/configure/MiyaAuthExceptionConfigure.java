@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * @author Caixiaowei
  * @ClassName MiyaAuthExceptionConfigure.java
- * @Description TODO
+ * @Description 注册401、403一场处理到IOC
  * @createTime 2020年05月12日 18:05:00
  */
 public class MiyaAuthExceptionConfigure {
