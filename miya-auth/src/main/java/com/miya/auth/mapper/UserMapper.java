@@ -13,5 +13,13 @@ import com.miya.entity.system.SystemUser;
  */
 public interface UserMapper extends BaseMapper<SystemUser> {
 
+    /**
+     * 通过用户名查找用户信息
+     *
+     * @param username 用户名
+     * @return SystemUser 用户信息
+     * @author Caixiaowei
+     * @updateTime 2021/1/7 14:19
+     */
     SystemUser findByName(String username);
 }

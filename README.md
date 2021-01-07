@@ -11,6 +11,7 @@
 - miya-auth 授权认证中心,管理令牌
 - miya-common 通用模块
 - miya-system 系统管理(权限)
+- miya-monitor-Admin 监控admin
 
 ### 端口约定
 
@@ -20,6 +21,7 @@
 | miya-auth    | 8101 |
 | miya-system  | 8201 |
 | miya-gataway | 8301 |
+| miya-monitor-Admin | 8401 |
 
 
 
@@ -27,6 +29,8 @@
 
 | Spring Cloud Version        | Spring Cloud Alibaba Version | Spring Boot Version |
 | --------------------------- | ---------------------------- | ------------------- |
+| Spring Cloud Hoxton.SR8     | 2.2.3.RELEASE                | 2.3.2.RELEASE       |
+| Spring Cloud Greenwich.SR6  | 2.1.3.RELEASE                | 2.1.13.RELEASE       |
 | Spring Cloud Hoxton.SR3     | 2.2.1.RELEASE                | 2.2.5.RELEASE       |
 | Spring Cloud Hoxton.RELEASE | 2.2.0.RELEASE                | 2.2.X.RELEASE       |
 | Spring Cloud Greenwich      | 2.1.2.RELEASE                | 2.1.X.RELEASE       |

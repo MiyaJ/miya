@@ -11,7 +11,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author Caixiaowei-zy
  */
 @SpringBootApplication
-@EnableDiscoveryClient
 @MapperScan("com.miya.auth.mapper")
 @MiyaCloudApplication
 @EnableMiyaLettuceRedis
