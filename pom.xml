@@ -17,6 +17,7 @@
         <module>miya-gateway</module>
         <module>miya-system</module>
         <module>miya-monitor</module>
+        <module>miya-server</module>
     </modules>
 
     <parent>
