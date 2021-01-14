@@ -15,6 +15,6 @@
     <description>miya-server服务聚合模块</description>
 
     <modules>
-
+        <module>miya-system</module>
     </modules>
 </project>
