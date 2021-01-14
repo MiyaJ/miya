@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -95,6 +96,7 @@ public class MenuController {
      * @updateTime 2020/6/5 9:52
      */
     @ApiOperation(value = "新增菜单/按钮")
+    @PreAuthorize("hasAuthority('menu:add')")
     @PostMapping("/add")
     public MiyaResponse add(@RequestBody Menu menu) {
         menuService.add(menu);
@@ -109,6 +111,7 @@ public class MenuController {
      * @updateTime 2020/6/5 9:53
      */
     @ApiOperation(value = "修改菜单/按钮")
+    @PreAuthorize("hasAuthority('menu:update')")
     @PostMapping("/update")
     public MiyaResponse update(@RequestBody Menu menu) {
         menuService.update(menu);
@@ -123,6 +126,7 @@ public class MenuController {
      * @updateTime 2020/6/5 9:53
      */
     @ApiOperation(value = "删除菜单/按钮")
+    @PreAuthorize("hasAuthority('menu:delete')")
     @ApiImplicitParam(name = "menuIds", value = "菜单ids", required = true, dataType = "String", paramType = "query")
     @DeleteMapping("/delete")
     public MiyaResponse delete(String menuIds) {
