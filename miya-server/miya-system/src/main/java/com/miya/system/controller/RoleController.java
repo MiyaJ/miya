@@ -12,9 +12,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -60,15 +58,15 @@ public class RoleController {
     }
 
     @ApiOperation(value = "新增角色")
-    @GetMapping("/add")
-    public MiyaResponse add(Role Role) {
+    @PostMapping("/add")
+    public MiyaResponse add(@RequestBody Role Role) {
         roleService.add(Role);
         return MiyaResponse.success();
     }
 
     @ApiOperation(value = "修改角色")
-    @GetMapping("/update")
-    public MiyaResponse update(Role Role) {
+    @PostMapping("/update")
+    public MiyaResponse update(@RequestBody Role Role) {
         roleService.updateRole(Role);
         return MiyaResponse.success();
     }
