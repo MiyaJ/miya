@@ -16,5 +16,6 @@
 
     <modules>
         <module>miya-system</module>
+        <module>miya-pay</module>
     </modules>
 </project>

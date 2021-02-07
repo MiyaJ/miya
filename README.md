@@ -12,6 +12,7 @@
 - miya-common 通用模块
 - miya-system 系统管理(权限)
 - miya-monitor-Admin 监控admin
+- miya-pay 支付服务: 整合支付宝 + 微信 + 银行卡 支付
 
 ### 端口约定
 
@@ -22,6 +23,7 @@
 | miya-system  | 8201 |
 | miya-gataway | 8301 |
 | miya-monitor-Admin | 8401 |
+| miya-pay | 8501 |
 
 
 
