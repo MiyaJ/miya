@@ -26,6 +26,10 @@ spring:
           uri: lb://miya-system
           predicates:
             - Path=/system/**
+        - id: miya-pay
+          uri: lb://miya-pay
+          predicates:
+            - Path=/pay/**
       default-filters:
         - StripPrefix=1
   autoconfigure: # 关闭数据库自动装配
