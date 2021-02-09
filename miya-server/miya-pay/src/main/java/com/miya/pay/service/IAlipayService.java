@@ -1,6 +1,8 @@
 package com.miya.pay.service;
 
+import com.miya.pay.model.AliTradePayDTO;
 import com.miya.pay.model.AlipayDTO;
+import com.miya.pay.model.AlipayRefundDTO;
 
 /**
  * @author Caixiaowei
@@ -28,7 +30,7 @@ public interface IAlipayService {
      * @author Caixiaowei
      * @updateTime 2021/2/8 15:44
      */
-    void appPay(AlipayDTO alipayDTO);
+    String appPay(AlipayDTO alipayDTO);
 
     /**
      * 手机网站支付
@@ -38,46 +40,46 @@ public interface IAlipayService {
      * @author Caixiaowei
      * @updateTime 2021/2/8 15:44
      */
-    void WapPay(AlipayDTO alipayDTO);
+    void wapPay(AlipayDTO alipayDTO);
 
     /**
      * 条码 声波支付
      *
-     * @param alipayDTO 支付参数
+     * @param aliTradePayDTO 支付参数
      * @return
      * @author Caixiaowei
      * @updateTime 2021/2/8 15:44
      */
-    void tradePay(AlipayDTO alipayDTO);
+    String tradePay(AliTradePayDTO aliTradePayDTO);
 
     /**
      * 扫码支付
      *
-     * @param alipayDTO 支付参数
+     * @param aliTradePayDTO 支付参数
      * @return
      * @author Caixiaowei
      * @updateTime 2021/2/8 15:44
      */
-    void tradePrecreatePay(AlipayDTO alipayDTO);
+    String tradePrecreatePay(AliTradePayDTO aliTradePayDTO);
 
     /**
      * 退款
      *
-     * @param alipayDTO 支付参数
+     * @param alipayRefundDTO 支付参数
      * @return
      * @author Caixiaowei
      * @updateTime 2021/2/8 15:44
      */
-    void tradeRefund(AlipayDTO alipayDTO);
+    void tradeRefund(AlipayRefundDTO alipayRefundDTO);
 
     /**
      * 支付交易查询
      *
-     * @param alipayDTO 支付参数
+     * @param alipayRefundDTO 支付参数
      * @return
      * @author Caixiaowei
      * @updateTime 2021/2/8 15:44
      */
-    void tradeQuery(AlipayDTO alipayDTO);
+    String tradeQuery(AlipayRefundDTO alipayRefundDTO);
 
 }
