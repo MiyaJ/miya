@@ -73,13 +73,13 @@ public class AlipayServiceImpl implements IAlipayService {
         model.setTimeoutExpress(EXPIRE);
 
         // 构建请求
-        AlipayTradePagePayRequest request = (AlipayTradePagePayRequest) buildAlipayRequest(model);
+        AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
+        buildAlipayRequest(request, model);
 
         // 发起支付请求
         AlipayTradePagePayResponse alipayResponse = null;
         try {
             alipayResponse = alipayClient.pageExecute(request);
-
             if(alipayResponse.isSuccess()){
                 System.out.println("调用成功");
             } else {
@@ -87,12 +87,12 @@ public class AlipayServiceImpl implements IAlipayService {
             }
 
             String form = alipayResponse.getBody();
-            HttpServletResponse httpResponse = ServletUtil.getResponse();
-            httpResponse.setContentType( "text/html;charset="  + alipayProperties.getCharset());
+            HttpServletResponse response = ServletUtil.getResponse();
+            response.setContentType( "text/html;charset="  + alipayProperties.getCharset());
             //直接将完整的表单html输出到页面
-            httpResponse.getWriter().write(form);
-            httpResponse.getWriter().flush();
-            httpResponse.getWriter().close();
+            response.getWriter().write(form);
+            response.getWriter().flush();
+            response.getWriter().close();
 
         } catch (AlipayApiException | IOException e) {
             e.printStackTrace();
@@ -122,7 +122,9 @@ public class AlipayServiceImpl implements IAlipayService {
         model.setPassbackParams("callback params");
 
         // 构建请求
-        AlipayTradeAppPayRequest request = (AlipayTradeAppPayRequest) buildAlipayRequest(model);
+        AlipayTradeAppPayRequest request = new AlipayTradeAppPayRequest();
+        buildAlipayRequest(request, model);
+
         AlipayTradeAppPayResponse payResponse = null;
         try {
             payResponse = alipayClient.sdkExecute(request);
@@ -156,7 +158,9 @@ public class AlipayServiceImpl implements IAlipayService {
         model.setTimeExpire(EXPIRE);
 
         // 构建请求
-        AlipayTradeWapPayRequest request = (AlipayTradeWapPayRequest) buildAlipayRequest(model);
+        AlipayTradeWapPayRequest request = new AlipayTradeWapPayRequest();
+        buildAlipayRequest(request, model);
+
         AlipayTradeWapPayResponse payResponse = null;
         try {
             payResponse = alipayClient.pageExecute(request);
@@ -208,7 +212,8 @@ public class AlipayServiceImpl implements IAlipayService {
         model.setTimeoutExpress(EXPIRE);
 
         // 构建请求
-        AlipayTradePayRequest request = (AlipayTradePayRequest) buildAlipayRequest(model);
+        AlipayTradePayRequest request = new AlipayTradePayRequest();
+        buildAlipayRequest(request, model);
         try {
             AlipayTradePayResponse payResponse = alipayClient.execute(request);
             log.info("调用支付结果: {}", JSONObject.toJSONString(payResponse));
@@ -239,7 +244,9 @@ public class AlipayServiceImpl implements IAlipayService {
         model.setTimeoutExpress(EXPIRE);
 
         // 构建请求
-        AlipayTradePrecreateRequest request = (AlipayTradePrecreateRequest) buildAlipayRequest(model);
+        AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
+        buildAlipayRequest(request, model);
+
         try {
             AlipayTradePrecreateResponse payResponse = alipayClient.execute(request);
             log.info("扫码支付结果: {}", JSONObject.toJSONString(payResponse));
@@ -336,12 +343,10 @@ public class AlipayServiceImpl implements IAlipayService {
      * @author Caixiaowei
      * @updateTime 2021/2/9 14:53
      */
-    private AlipayRequest buildAlipayRequest(AlipayObject model) {
-        AlipayRequest request = new AlipayTradePayRequest();
-        request.setNotifyUrl(alipayProperties.getNotifyUrl());
-        request.setReturnUrl(alipayProperties.getReturnUrl());
+    private void buildAlipayRequest(AlipayRequest request, AlipayObject model) {
         request.setBizModel(model);
-        return request;
+        request.setReturnUrl(alipayProperties.getReturnUrl());
+        request.setNotifyUrl(alipayProperties.getNotifyUrl());
     }
 
 }
