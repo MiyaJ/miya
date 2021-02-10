@@ -1,6 +1,8 @@
 package com.miya.pay.controller;
 
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
+import com.miya.pay.model.AliTradePayDTO;
 import com.miya.pay.model.AlipayDTO;
 import com.miya.pay.service.IAlipayService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,5 +44,45 @@ public class TestController {
         } catch (Exception e) {
             log.error("电脑网站支付测试: 失败, error: {}", e);
         }
+    }
+
+    /**
+     * 条码 | 声波 支付
+     *
+     * @param authCode 授权码
+     * @return
+     * @author Caixiaowei
+     * @updateTime 2021/2/10 11:32
+     */
+    @RequestMapping("/tradePay")
+    public void tradePay(String authCode) {
+        AliTradePayDTO aliTradePayDTO = new AliTradePayDTO();
+        aliTradePayDTO.setOrderNo(IdUtil.fastSimpleUUID());
+        aliTradePayDTO.setAmount(new BigDecimal("0.01"));
+        aliTradePayDTO.setDesc("条码 | 声波 支付");
+        aliTradePayDTO.setAuthCode(authCode);
+        aliTradePayDTO.setScene("bar_code");
+        aliTradePayDTO.setStoreId(StrUtil.EMPTY);
+        alipayService.tradePay(aliTradePayDTO);
+    }
+
+    /**
+     * 扫码支付
+     *
+     * @param authCode 授权码
+     * @return
+     * @author Caixiaowei
+     * @updateTime 2021/2/10 11:32
+     */
+    @RequestMapping("/tradePrecreatePay")
+    public void tradePrecreatePay(String authCode) {
+        AliTradePayDTO aliTradePayDTO = new AliTradePayDTO();
+        aliTradePayDTO.setOrderNo(IdUtil.fastSimpleUUID());
+        aliTradePayDTO.setAmount(new BigDecimal("0.01"));
+        aliTradePayDTO.setDesc("扫码支付");
+        aliTradePayDTO.setAuthCode(authCode);
+        aliTradePayDTO.setScene("bar_code");
+        aliTradePayDTO.setStoreId(StrUtil.EMPTY);
+        alipayService.tradePrecreatePay(aliTradePayDTO);
     }
 }
