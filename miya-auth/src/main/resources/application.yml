@@ -1,69 +1,69 @@
-server:
-  port: 8101
-spring:
-  application:
-    name: miya-auth
-  cloud:
-    nacos:
-      discovery:
-        namespace: 8f9990b9-483a-4728-98c7-32e7cd04d475
-        server-addr: localhost:8001
-  # admin 监控
-  boot:
-    admin:
-      client:
-        url: http://localhost:8401
-        username: miya
-        password: 123456
-  redis:
-    database: 0
-    host: 127.0.0.1
-    port: 6379
-    lettuce:
-      pool:
-        min-idle: 8
-        max-idle: 500
-        max-active: 2000
-        max-wait: 10000
-    timeout: 5000
-  datasource:
-    dynamic:
-      hikari:
-        connection-timeout: 30000
-        max-lifetime: 1800000
-        max-pool-size: 15
-        min-idle: 5
-        connection-test-query: select 1
-        pool-name: MiyaHikariCP
-      primary: base
-      datasource:
-        base:
-          username: root
-          password: root
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/miya?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
-
-# mybatis mplus 配置
-mybatis-plus:
-  type-aliases-package: com.miya.entity.system
-  mapper-locations: classpath:mapper/*.xml
-  configuration:
-    jdbc-type-for-null: null
-  global-config:
-    banner: false
-
-# admin 监控
-info:
-  app:
-    name: ${spring.application.name}
-    description: "@project.description@"
-    version: "@project.version@"
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  endpoint:
-    health:
-      show-details: ALWAYS
+#server:
+#  port: 8101
+#spring:
+#  application:
+#    name: miya-auth
+#  cloud:
+#    nacos:
+#      discovery:
+#        namespace: dfa47935-e89b-40a9-a489-326e550388e6
+#        server-addr: http://172.81.245.35:8001
+#  # admin 监控
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8401
+#        username: miya
+#        password: 123456
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    lettuce:
+#      pool:
+#        min-idle: 8
+#        max-idle: 500
+#        max-active: 2000
+#        max-wait: 10000
+#    timeout: 5000
+#  datasource:
+#    dynamic:
+#      hikari:
+#        connection-timeout: 30000
+#        max-lifetime: 1800000
+#        max-pool-size: 15
+#        min-idle: 5
+#        connection-test-query: select 1
+#        pool-name: MiyaHikariCP
+#      primary: base
+#      datasource:
+#        base:
+#          username: root
+#          password: root
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://172.81.245.35:3306/miya?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+#
+## mybatis mplus 配置
+#mybatis-plus:
+#  type-aliases-package: com.miya.entity.system
+#  mapper-locations: classpath:mapper/*.xml
+#  configuration:
+#    jdbc-type-for-null: null
+#  global-config:
+#    banner: false
+#
+## admin 监控
+#info:
+#  app:
+#    name: ${spring.application.name}
+#    description: "@project.description@"
+#    version: "@project.version@"
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#  endpoint:
+#    health:
+#      show-details: ALWAYS

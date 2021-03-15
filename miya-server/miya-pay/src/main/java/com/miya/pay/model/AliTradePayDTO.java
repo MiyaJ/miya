@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @author Caixiaowei
  * @ClassName AliTradePayDTO
- * @Description
+ * @Description 支付宝交易参数
  * @createTime 2021/2/9 15:27
  */
 @Data
