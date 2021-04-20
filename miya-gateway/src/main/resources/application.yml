@@ -14,7 +14,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        namespace: dfa47935-e89b-40a9-a489-326e550388e6
+        namespace: 462daff6-139a-48bd-a529-39ef27b87745
         server-addr: http://172.81.245.35:8001
     gateway:
       routes:

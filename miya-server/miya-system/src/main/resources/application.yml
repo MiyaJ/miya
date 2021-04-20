@@ -1,95 +1,95 @@
-server:
-  port: 8201
-
-spring:
-  application:
-    name: miya-system
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
-  # admin 监控
-  boot:
-    admin:
-      client:
-        url: http://localhost:8401
-        username: miya
-        password: 123456
-  cloud:
-    nacos:
-      discovery:
-        namespace: dfa47935-e89b-40a9-a489-326e550388e6
-        server-addr: 127.0.0.1:8001
-      config:
-        server-addr: 127.0.0.1:8001
-        file-extension: yml
-        namespace: dfa47935-e89b-40a9-a489-326e550388e6
-  main:
-    allow-bean-definition-overriding: true
-  redis:
-    database: 0
-    host: 127.0.0.1
-    port: 6379
-    lettuce:
-      pool:
-        min-idle: 8
-        max-idle: 500
-        max-active: 2000
-        max-wait: 10000
-    timeout: 5000
-  datasource:
-    dynamic:
-      hikari:
-        connection-timeout: 30000
-        max-lifetime: 1800000
-        max-pool-size: 15
-        min-idle: 5
-        connection-test-query: select 1
-        pool-name: MiyaHikariCP
-      primary: base
-      datasource:
-        base:
-          username: root
-          password: root
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/miya?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
-      p6spy: true # 开启控制台sql 打印
-# mybatis mplus 配置
-mybatis-plus:
-  type-aliases-package: com.miya.entity.system
-  mapper-locations: classpath:mapper/*.xml
-  configuration:
-    jdbc-type-for-null: null
-  global-config:
-    banner: false
-
-security:
-  oauth2:
-    resource:
-      id: ${spring.application.name}
-      user-info-uri: http://localhost:8301/auth/user
-
-# admin 监控
-info:
-  app:
-    name: ${spring.application.name}
-    description: "@project.description@"
-    version: "@project.version@"
-
-# admin 监控
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  endpoint:
-    health:
-      show-details: ALWAYS
-
-rocketmq:
-  producer:
-    groupName: ${spring.application.name}
-    isOnOff: 'on'
-    maxMessageSize: 4096
-    namesrvAddr: 127.0.0.1:9876
-    retryTimesWhenSendFailed: 2
-    sendMsgTimeOut: 3000
+#server:
+#  port: 8201
+#
+#spring:
+#  application:
+#    name: miya-system
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+#  # admin 监控
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8401
+#        username: miya
+#        password: 123456
+#  cloud:
+#    nacos:
+#      discovery:
+#        namespace: 462daff6-139a-48bd-a529-39ef27b87745
+#        server-addr: 127.0.0.1:8001
+#      config:
+#        server-addr: 127.0.0.1:8001
+#        file-extension: yml
+#        namespace: 462daff6-139a-48bd-a529-39ef27b87745
+#  main:
+#    allow-bean-definition-overriding: true
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    lettuce:
+#      pool:
+#        min-idle: 8
+#        max-idle: 500
+#        max-active: 2000
+#        max-wait: 10000
+#    timeout: 5000
+#  datasource:
+#    dynamic:
+#      hikari:
+#        connection-timeout: 30000
+#        max-lifetime: 1800000
+#        max-pool-size: 15
+#        min-idle: 5
+#        connection-test-query: select 1
+#        pool-name: MiyaHikariCP
+#      primary: base
+#      datasource:
+#        base:
+#          username: root
+#          password: root
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://localhost:3306/miya?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+#      p6spy: true # 开启控制台sql 打印
+## mybatis mplus 配置
+#mybatis-plus:
+#  type-aliases-package: com.miya.entity.system
+#  mapper-locations: classpath:mapper/*.xml
+#  configuration:
+#    jdbc-type-for-null: null
+#  global-config:
+#    banner: false
+#
+#security:
+#  oauth2:
+#    resource:
+#      id: ${spring.application.name}
+#      user-info-uri: http://localhost:8301/auth/user
+#
+## admin 监控
+#info:
+#  app:
+#    name: ${spring.application.name}
+#    description: "@project.description@"
+#    version: "@project.version@"
+#
+## admin 监控
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#  endpoint:
+#    health:
+#      show-details: ALWAYS
+#
+#rocketmq:
+#  producer:
+#    groupName: ${spring.application.name}
+#    isOnOff: 'on'
+#    maxMessageSize: 4096
+#    namesrvAddr: 127.0.0.1:9876
+#    retryTimesWhenSendFailed: 2
+#    sendMsgTimeOut: 3000
