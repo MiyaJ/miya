@@ -1,6 +1,7 @@
 package com.miya.pay.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Caixiaowei
@@ -9,6 +10,7 @@ import lombok.Data;
  * @createTime 2021/2/9 15:27
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class AliTradePayDTO extends AlipayDTO {
 
     /**

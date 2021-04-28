@@ -29,6 +29,11 @@
     <properties>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <com-alibaba-cloud.version>2.2.1.RELEASE</com-alibaba-cloud.version>
+        <aliy-pay-sdk.version>4.11.47.ALL</aliy-pay-sdk.version>
+        <p6spy.version>3.8.1</p6spy.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <rocketmq-client.version>4.7.0</rocketmq-client.version>
+        <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
     </properties>
 
     <dependencyManagement>
