@@ -1,4 +1,4 @@
-package com.miya.warehouse.configure;
+package com.miya.order.configure;
 
 import com.miya.handler.MiyaAccessDeniedHandler;
 import com.miya.handler.MiyaAuthExceptionEntryPoint;
@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  */
 @Configuration
 @EnableResourceServer
-public class MiyaServerWarehouseResourceServerConfigure extends ResourceServerConfigurerAdapter {
+public class MiyaServerOrderResourceServerConfigure extends ResourceServerConfigurerAdapter {
 
     @Autowired
     private MiyaAccessDeniedHandler accessDeniedHandler;

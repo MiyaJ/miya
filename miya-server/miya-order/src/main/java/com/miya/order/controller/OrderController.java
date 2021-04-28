@@ -1,4 +1,4 @@
-package com.miya.order;
+package com.miya.order.controller;
 
 import com.miya.entity.MiyaResponse;
 import com.miya.order.feignclient.WarehouseServiceFeignClient;
