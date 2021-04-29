@@ -15,3 +15,15 @@ spring:
         server-addr: http://172.81.245.35:8001
   main:
     allow-bean-definition-overriding: true
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE

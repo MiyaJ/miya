@@ -32,4 +32,9 @@ public class WarehouseController {
 
         return MiyaResponse.success(stock);
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "调用成功!";
+    }
 }

@@ -15,3 +15,9 @@ spring:
         server-addr: http://172.81.245.35:8001
   main:
     allow-bean-definition-overriding: true
+
+security:
+  oauth2:
+    resource:
+      id: ${spring.application.name}
+      user-info-uri: http://localhost:8301/auth/user
