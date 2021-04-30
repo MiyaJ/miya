@@ -13,8 +13,18 @@ spring:
       discovery:
         namespace: 462daff6-139a-48bd-a529-39ef27b87745
         server-addr: http://172.81.245.35:8001
+    sentinel: #Sentinel Dashboard通信地址
+      transport:
+        dashboard: localhost:8080
+      eager: true #取消控制台懒加载
   main:
     allow-bean-definition-overriding: true
+
+management:
+  endpoints:
+    web: #将所有可用的监控指标项对外暴露
+      exposure: #可以访问 /actuator/sentinel进行查看Sentinel监控项
+        include: '*'
 
 feign:
   hystrix:
