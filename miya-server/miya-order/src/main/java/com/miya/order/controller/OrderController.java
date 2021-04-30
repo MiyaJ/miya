@@ -32,4 +32,9 @@ public class OrderController {
         log.info(("订单服务--->调用 warehouseServiceFeignClient"));
         return warehouseServiceFeignClient.test();
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "success";
+    }
 }

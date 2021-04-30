@@ -34,6 +34,12 @@
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <rocketmq-client.version>4.7.0</rocketmq-client.version>
         <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
+        <hutool.version>5.5.8</hutool.version>
+        <freemarker.version>2.3.30</freemarker.version>
+        <velocity-engine-core.version>2.2</velocity-engine-core.version>
+        <mybatis-plus.version>3.3.1</mybatis-plus.version>
+        <fastjson.version>1.2.51</fastjson.version>
+        <dynamic-datasource.version>2.5.4</dynamic-datasource.version>
     </properties>
 
     <dependencyManagement>

@@ -44,17 +44,6 @@
             <version>${p6spy.version}</version>
         </dependency>
 
-        <!-- Sentinel客户端Starter-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <!-- 对外暴露Spring Boot监控指标-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
