@@ -8,11 +8,11 @@ spring:
       config:
         file-extension: yml
         namespace: 462daff6-139a-48bd-a529-39ef27b87745
-        server-addr: http://172.81.245.35:8001
+        server-addr: http://www.miya-l.top:8001
         shared-configs: mysql.yml,redis.yml,admin.yml
       discovery:
         namespace: 462daff6-139a-48bd-a529-39ef27b87745
-        server-addr: http://172.81.245.35:8001
+        server-addr: http://www.miya-l.top:8001
   main:
     allow-bean-definition-overriding: true
 
