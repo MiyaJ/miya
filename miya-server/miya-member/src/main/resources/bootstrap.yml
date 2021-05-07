@@ -1,0 +1,39 @@
+server:
+  port: 8801
+spring:
+  application:
+    name: miya-member
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        namespace: 462daff6-139a-48bd-a529-39ef27b87745
+        server-addr: http://www.miya-l.top:8001
+        shared-configs: mysql.yml,redis.yml,admin.yml
+      discovery:
+        namespace: 462daff6-139a-48bd-a529-39ef27b87745
+        server-addr: http://www.miya-l.top:8001
+    sentinel: #Sentinel Dashboard通信地址
+      transport:
+        dashboard: localhost:9100
+      eager: true #取消控制台懒加载
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoints:
+    web: #将所有可用的监控指标项对外暴露
+      exposure: #可以访问 /actuator/sentinel进行查看Sentinel监控项
+        include: '*'
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
