@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @createTime 2021/4/28 17:01
  */
 @Component
-//@FeignClient(value = "miya-warehouse")
 @FeignClient(value = "miya-warehouse", fallbackFactory = WarehouseServiceFallback.class)
 public interface WarehouseServiceFeignClient {
 

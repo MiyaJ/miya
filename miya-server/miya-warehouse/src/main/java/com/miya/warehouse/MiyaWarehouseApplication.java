@@ -2,6 +2,7 @@ package com.miya.warehouse;
 
 import com.miya.annotation.EnableMiyaLettuceRedis;
 import com.miya.annotation.MiyaCloudApplication;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableMiyaLettuceRedis
 @MiyaCloudApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@MapperScan("com.miya.warehouse.mapper")
 public class MiyaWarehouseApplication {
 
     public static void main(String[] args) {

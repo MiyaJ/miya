@@ -1,10 +1,16 @@
 package com.miya.warehouse.controller;
 
 import com.miya.entity.MiyaResponse;
+import com.miya.entity.warehouse.PmsSkuStock;
 import com.miya.warehouse.model.Stock;
+import com.miya.warehouse.service.IPmsSkuStockService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Caixiaowei
@@ -14,23 +20,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/stock")
+@Slf4j
 public class WarehouseController {
 
+    @Autowired
+    private IPmsSkuStockService pmsSkuStockService;
 
     @GetMapping("/getStock")
-    public MiyaResponse getStock(Long skuId) {
-        Stock stock = null;
-        if (skuId == 11011) {
-            //模拟有库存商品
-            stock = new Stock(1101L, "Apple iPhone 11 128GB 紫色", 32, "台", "Apple 11 紫色版对应商品描述");
-        } else if (skuId == 11021) {
-            //模拟无库存商品
-            stock = new Stock(1101L, "Apple iPhone 11 256GB 白色", 0, "台", "Apple 11 白色版对应商品描述");
-        } else {
-            return MiyaResponse.error("查无此商品");
-        }
+    public MiyaResponse getStock(Long skuId, HttpServletRequest request) {
+        String contentType = request.getContentType();
+        log.info("contentType: {}", contentType);
 
-        return MiyaResponse.success(stock);
+        String method = request.getMethod();
+        log.info("method: {}", method);
+
+        PmsSkuStock skuStock = pmsSkuStockService.getById(skuId);
+        return MiyaResponse.success(skuStock);
     }
 
     @GetMapping("/test")

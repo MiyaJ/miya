@@ -56,11 +56,11 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/miya?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true" +
+        dsc.setUrl("jdbc:mysql://www.miya-l.top:3306/miya?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true" +
                 "&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=GMT%2B8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setPassword("cai555777+");
         mpg.setDataSource(dsc);
 
         // 包配置
